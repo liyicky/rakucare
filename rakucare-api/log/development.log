@@ -451,3 +451,455 @@ Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 720)
 
   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
   [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "a6a85490-88f6-49bc-bd57-7fdb0a4ac3d0"], ["id", 4]]
+Started GET "/" for ::1 at 2023-06-14 11:17:19 +0900
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/liyicky/.asdf/installs/ruby/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/liyicky/.asdf/installs/ruby/3.1.2/lib/ruby/gems/3.1.0/gems/railties-7.0.5/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.4ms | Allocations: 635)
+Completed 200 OK in 16ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 5944)
+
+
+Started POST "/signup" for ::1 at 2023-06-14 12:46:50 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"t@t.com", "password"=>"[FILTERED]", "name"=>"Jason"}, "registration"=>{"user"=>{"email"=>"t@t.com", "password"=>"[FILTERED]", "name"=>"Jason"}}}
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "t@t.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (3.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "name", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "t@t.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-06-14 03:46:50.755219"], ["updated_at", "2023-06-14 03:46:50.755219"], ["name", "Jason"], ["jti", "8b513bcf-081b-464e-89a2-ddc40ae93b6a"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 472ms (Views: 0.3ms | ActiveRecord: 66.1ms | Allocations: 17836)
+
+
+Started POST "/signup" for ::1 at 2023-06-14 12:49:28 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]", "name"=>"Testy Test"}, "registration"=>{"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]", "name"=>"Testy Test"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vuetest1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "name", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "vuetest1@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-06-14 03:49:28.722811"], ["updated_at", "2023-06-14 03:49:28.722811"], ["name", "Testy Test"], ["jti", "ead0eab7-1166-492e-a101-b7309ac310d0"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 288ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 4747)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 12:59:22 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 51ms (Views: 0.4ms | ActiveRecord: 16.0ms | Allocations: 4422)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Update (4.5ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "1b4e21c0-5e6f-4d28-ae9a-1cb81c3d78d9"], ["id", 6]]
+Started POST "/login" for ::1 at 2023-06-14 13:29:35 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"vuetest@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"vuetest@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vuetest@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 142ms (ActiveRecord: 42.8ms | Allocations: 6320)
+
+
+Started POST "/signup" for ::1 at 2023-06-14 13:30:06 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]", "name"=>"Jason"}, "registration"=>{"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]", "name"=>"Jason"}}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (3.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vuetest1@test.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 288ms (Views: 0.6ms | ActiveRecord: 3.7ms | Allocations: 3925)
+
+
+Started POST "/login" for ::1 at 2023-06-14 13:30:29 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (34.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vuetest1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 328ms (Views: 0.2ms | ActiveRecord: 34.6ms | Allocations: 1693)
+
+
+Started POST "/login" for ::1 at 2023-06-14 13:52:29 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"vuetest1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vuetest1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 385ms (Views: 0.5ms | ActiveRecord: 41.5ms | Allocations: 4339)
+
+
+Started POST "/login" for ::1 at 2023-06-14 14:52:05 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 89ms (ActiveRecord: 39.6ms | Allocations: 3992)
+
+
+Started POST "/login" for ::1 at 2023-06-14 14:52:31 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 7ms (ActiveRecord: 0.5ms | Allocations: 1159)
+
+
+Started POST "/signup" for ::1 at 2023-06-14 14:52:47 +0900
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]", "name"=>"Jason"}, "registration"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]", "name"=>"Jason"}}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (4.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "name", "jti") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "testvue1@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2023-06-14 05:52:47.600999"], ["updated_at", "2023-06-14 05:52:47.600999"], ["name", "Jason"], ["jti", "5995ddbb-6091-43ce-b3d5-cf18ab590275"]]
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 303ms (Views: 0.3ms | ActiveRecord: 8.6ms | Allocations: 4515)
+
+
+Started POST "/login" for ::1 at 2023-06-14 14:53:58 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 287ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 14:55:05 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 289ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 1510)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:09:57 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 350ms (Views: 0.4ms | ActiveRecord: 19.3ms | Allocations: 4338)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:11:49 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 289ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:13:02 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 281ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:13:53 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 293ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 1507)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:14:49 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 740)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (4.3ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "9c911b41-3fb6-49c9-a454-c2142dd1bfba"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:15:06 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 290ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 1511)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:16:20 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 704)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.9ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "8358f8ae-86ba-4e61-8ed6-8e9ebe9519dd"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:16:26 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 296ms (Views: 0.2ms | ActiveRecord: 1.4ms | Allocations: 1509)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:16:53 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 291ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1507)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:19:32 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "0970fdd9-482d-47a7-83e0-9a7d20d18575"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:19:37 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 293ms (ActiveRecord: 1.4ms | Allocations: 1211)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:19:48 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 290ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:20:10 +0900
+Processing by Users::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"test3@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"test3@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test3@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 281ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 1541)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:22:03 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 1.3ms | Allocations: 704)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.8ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "af36d35e-4c80-4c0b-9d60-d312206b2d19"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:22:11 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 291ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:22:28 +0900
+Processing by Users::SessionsController#create as */*
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 296ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1511)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:24:09 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "b2ec9845-8311-4aaa-a6e7-5912f602cc50"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:24:16 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 289ms (ActiveRecord: 0.9ms | Allocations: 1208)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:24:30 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 290ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1508)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:25:07 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "ecb6212e-c164-474d-bfd1-6ee0f6661db0"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:25:13 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 291ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1507)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:25:36 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (2.1ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "6fa66d1d-022f-4bb9-ae3f-b3b51428c2c4"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:25:43 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 297ms (Views: 0.2ms | ActiveRecord: 1.9ms | Allocations: 1508)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:26:12 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 704)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (2.6ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "b45b46f0-ad48-4da2-9d2e-b60988c0f4b5"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:26:42 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 295ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1507)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:27:15 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 290ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1508)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:28:08 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 290ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1511)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:28:46 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 704)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (6.1ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "b24d2792-5bc7-447b-ac85-33a8b86363f3"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:29:00 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 292ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1509)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:29:12 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 704)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "29ba4d19-ab2f-40cd-953c-a59b70af4533"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:29:17 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 291ms (ActiveRecord: 0.6ms | Allocations: 1209)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:29:28 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 291ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1508)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:29:38 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.6ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "8ea365d2-e0b7-4e84-876d-c3f18ce7f081"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:29:47 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 289ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1507)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:30:01 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "2580bf61-0465-4600-8a4a-99e9fa8ee1b3"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:30:04 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 294ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 1508)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:30:38 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (1.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "17ec1550-3408-47e9-8772-0790b288d235"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:30:42 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 289ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 1507)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:30:48 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.6ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (3.4ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "d3673fd6-520c-4a92-b3bd-f1f205f71a4f"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:30:52 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 282ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1508)
+
+
+Started DELETE "/logout" for ::1 at 2023-06-14 15:31:13 +0900
+Processing by Users::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:26:in `respond_to_on_destroy'
+Filter chain halted as :verify_signed_out_user rendered or redirected
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 703)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Update (2.8ms)[0m  [1m[33mUPDATE "users" SET "jti" = $1 WHERE "users"."id" = $2[0m  [["jti", "7962e32c-426e-4d28-ad73-178b47ed3ccf"], ["id", 7]]
+Started POST "/login" for ::1 at 2023-06-14 15:31:21 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 291ms (ActiveRecord: 0.5ms | Allocations: 1208)
+
+
+Started POST "/login" for ::1 at 2023-06-14 15:31:37 +0900
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"testvue1@test.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "testvue1@test.com"], ["LIMIT", 1]]
+Completed 200 OK in 288ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1508)
+
+
